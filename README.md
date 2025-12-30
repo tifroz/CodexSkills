@@ -8,6 +8,8 @@ A collection of specialized skills for iOS and Swift development workflows.
 
 This repository contains a set of focused skills designed to assist with common iOS development tasks, from generating release notes to debugging apps and maintaining code quality.
 
+Install: place these skill folders under `$CODEX_HOME/skills/public` (or symlink this repo there).
+
 ## Skills
 
 ### 📝 App Store Changelog
