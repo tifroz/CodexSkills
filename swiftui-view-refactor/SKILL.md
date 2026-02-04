@@ -101,6 +101,38 @@ private struct HeaderSection: View {
 }
 ```
 
+### 3b) Keep a stable view tree (avoid top-level conditional view swapping)
+- Avoid patterns where a computed view (or `body`) returns completely different root branches using `if/else`.
+- Prefer a single stable base view, and place conditions inside sections/modifiers (`overlay`, `opacity`, `disabled`, `toolbar`, row content, etc.).
+- Root-level branch swapping can cause identity churn, broader invalidation, and extra recomputation in SwiftUI.
+
+Prefer:
+
+```swift
+var body: some View {
+    List {
+        documentsListContent
+    }
+    .toolbar {
+        if canEdit {
+            editToolbar
+        }
+    }
+}
+```
+
+Avoid:
+
+```swift
+var documentsListView: some View {
+    if canEdit {
+        editableDocumentsList
+    } else {
+        readOnlyDocumentsList
+    }
+}
+```
+
 ### 4) View model handling (only if already present)
 
 - Do not introduce a view model unless the request or existing code clearly calls for one.

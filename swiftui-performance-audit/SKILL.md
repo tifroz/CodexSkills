@@ -27,6 +27,7 @@ Focus on:
 
 - View invalidation storms from broad state changes.
 - Unstable identity in lists (`id` churn, `UUID()` per render).
+- Top-level conditional view swapping (`if/else` returning different root branches).
 - Heavy work in `body` (formatting, sorting, image decoding).
 - Layout thrash (deep stacks, `GeometryReader`, preference chains).
 - Large images without downsampling or resizing.
@@ -58,6 +59,7 @@ Prioritize likely SwiftUI culprits:
 
 - View invalidation storms from broad state changes.
 - Unstable identity in lists (`id` churn, `UUID()` per render).
+- Top-level conditional view swapping (`if/else` returning different root branches).
 - Heavy work in `body` (formatting, sorting, image decoding).
 - Layout thrash (deep stacks, `GeometryReader`, preference chains).
 - Large images without downsampling or resizing.
@@ -150,6 +152,20 @@ ForEach(items, id: \.self) { item in
 ```
 
 Avoid `id: \.self` for non-stable values; use a stable ID.
+
+### Top-level conditional view swapping
+
+```swift
+var content: some View {
+    if isEditing {
+        editingView
+    } else {
+        readOnlyView
+    }
+}
+```
+
+Prefer one stable base view and localize conditions to sections/modifiers (for example inside `toolbar`, row content, `overlay`, or `disabled`). This reduces root identity churn and helps SwiftUI diffing stay efficient.
 
 ### Image decoding on the main thread
 
