@@ -23,10 +23,33 @@
     "references": []
   },
   {
+    "name": "macos-spm-app-packaging",
+    "folder": "macos-spm-app-packaging",
+    "description": "Scaffold, build, and package SwiftPM-based macOS apps without an Xcode project. Use when you need a from-scratch macOS app layout, SwiftPM targets/resources, a custom .app bundle assembly script, or signing/notarization/appcast steps outside Xcode.",
+    "references": [
+      {
+        "title": "Packaging notes",
+        "file": "references/packaging.md"
+      },
+      {
+        "title": "Release and notarization notes",
+        "file": "references/release.md"
+      },
+      {
+        "title": "Scaffold a SwiftPM macOS app (no Xcode)",
+        "file": "references/scaffold.md"
+      }
+    ]
+  },
+  {
     "name": "swift-concurrency-expert",
     "folder": "swift-concurrency-expert",
     "description": "Swift Concurrency review and remediation for Swift 6.2+. Use when asked to review Swift Concurrency usage, improve concurrency compliance, or fix Swift concurrency compiler errors in a feature or file.",
     "references": [
+      {
+        "title": "Approachable Concurrency",
+        "file": "references/approachable-concurrency.md"
+      },
       {
         "title": "Swift 6 2 Concurrency",
         "file": "references/swift-6-2-concurrency.md"
@@ -77,8 +100,8 @@
     "description": "Best practices and example-driven guidance for building SwiftUI views and components. Use when creating or refactoring SwiftUI UI, designing tab architecture with TabView, composing screens, or needing component-specific patterns and examples.",
     "references": [
       {
-        "title": "App scaffolding wiring",
-        "file": "references/app-scaffolding-wiring.md"
+        "title": "App wiring and dependency graph",
+        "file": "references/app-wiring.md"
       },
       {
         "title": "Components Index",
@@ -113,8 +136,20 @@
         "file": "references/input-toolbar.md"
       },
       {
+        "title": "Lightweight Clients (Closure-Based)",
+        "file": "references/lightweight-clients.md"
+      },
+      {
         "title": "List and Section",
         "file": "references/list.md"
+      },
+      {
+        "title": "Loading & Placeholders",
+        "file": "references/loading-placeholders.md"
+      },
+      {
+        "title": "macOS Settings",
+        "file": "references/macos-settings.md"
       },
       {
         "title": "Matched transitions",
@@ -123,6 +158,10 @@
       {
         "title": "Media (images, video, viewer)",
         "file": "references/media.md"
+      },
+      {
+        "title": "Menu Bar",
+        "file": "references/menu-bar.md"
       },
       {
         "title": "NavigationStack",
@@ -157,6 +196,10 @@
         "file": "references/theming.md"
       },
       {
+        "title": "Title menus",
+        "file": "references/title-menus.md"
+      },
+      {
         "title": "Top bar overlays (iOS 26+ and fallback)",
         "file": "references/top-bar.md"
       }
@@ -172,5 +215,11 @@
         "file": "references/mv-patterns.md"
       }
     ]
+  },
+  {
+    "name": "validate",
+    "folder": "validate",
+    "description": "Run the /validate quality-control slash command: spawn a low-cost subagent to run swift build, skip android build, and SwiftLint (make lint) with reporting. Use when a user asks to validate, check build+lint, run QC, or validate a specific package in this Skip monorepo.",
+    "references": []
   }
 ]
