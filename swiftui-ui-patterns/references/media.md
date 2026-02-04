@@ -49,7 +49,7 @@ struct MediaPreviewRow: View {
 
 ```swift
 struct AppRoot: View {
-  @State private var quickLook = QuickLook.shared
+  @State internal var quickLook = QuickLook.shared
 
   var body: some View {
     content

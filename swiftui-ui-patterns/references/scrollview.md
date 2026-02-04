@@ -18,7 +18,7 @@ Use `ScrollView` with `LazyVStack`, `LazyHStack`, or `LazyVGrid` when you need c
 @MainActor
 struct ConversationView: View {
   private enum Constants { static let bottomAnchor = "bottom" }
-  @State private var scrollProxy: ScrollViewProxy?
+  @State internal var scrollProxy: ScrollViewProxy?
 
   var body: some View {
     ScrollViewReader { proxy in

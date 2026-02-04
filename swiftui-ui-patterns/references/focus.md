@@ -15,7 +15,7 @@ Use `@FocusState` to control keyboard focus, chain fields, and coordinate focus 
 
 ```swift
 struct AddServerView: View {
-  @State private var server = ""
+  @State internal var server = ""
   @FocusState private var isServerFieldFocused: Bool
 
   var body: some View {
@@ -56,8 +56,8 @@ struct EditTagView: View {
 struct PollView: View {
   enum FocusField: Hashable { case option(Int) }
   @FocusState private var focused: FocusField?
-  @State private var options: [String] = ["", ""]
-  @State private var currentIndex = 0
+  @State internal var options: [String] = ["", ""]
+  @State internal var currentIndex = 0
 
   var body: some View {
     ForEach(options.indices, id: \.self) { index in

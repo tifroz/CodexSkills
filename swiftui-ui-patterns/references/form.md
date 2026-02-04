@@ -50,8 +50,8 @@ struct AddRemoteServerView: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(Theme.self) private var theme
 
-  @State private var server: String = ""
-  @State private var isValid = false
+  @State internal var server: String = ""
+  @State internal var isValid = false
   @FocusState private var isServerFieldFocused: Bool
 
   var body: some View {

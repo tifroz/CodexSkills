@@ -37,7 +37,7 @@ enum Route: Hashable {
 
 @MainActor
 struct TimelineTab: View {
-  @State private var routerPath = RouterPath()
+  @State internal var routerPath = RouterPath()
 
   var body: some View {
     NavigationStack(path: $routerPath.path) {
@@ -87,8 +87,8 @@ NavigationStack(path: $routerPath.path) {
 ```swift
 @MainActor
 struct TabsView: View {
-  @State private var timelineRouter = RouterPath()
-  @State private var notificationsRouter = RouterPath()
+  @State internal var timelineRouter = RouterPath()
+  @State internal var notificationsRouter = RouterPath()
 
   var body: some View {
     TabView {
@@ -106,8 +106,8 @@ Use this when tabs are built from data and each needs its own path without hard-
 ```swift
 @MainActor
 struct TabsView: View {
-  @State private var selectedTab: AppTab = .timeline
-  @State private var tabRouter = TabRouter()
+  @State internal var selectedTab: AppTab = .timeline
+  @State internal var tabRouter = TabRouter()
 
   var body: some View {
     TabView(selection: $selectedTab) {
@@ -127,19 +127,19 @@ struct TabsView: View {
 @MainActor
 @Observable
 final class TabRouter {
-  private var routers: [AppTab: RouterPath] = [:]
+private var routers: [AppTab: RouterPath] = [:]
 
-  func router(for tab: AppTab) -> RouterPath {
-    if let router = routers[tab] { return router }
-    let router = RouterPath()
-    routers[tab] = router
-    return router
-  }
+func router(for tab: AppTab) -> RouterPath {
+if let router = routers[tab] { return router }
+let router = RouterPath()
+routers[tab] = router
+return router
+}
 
-  func binding(for tab: AppTab) -> Binding<[Route]> {
-    let router = router(for: tab)
-    return Binding(get: { router.path }, set: { router.path = $0 })
-  }
+func binding(for tab: AppTab) -> Binding<[Route]> {
+let router = router(for: tab)
+return Binding(get: { router.path }, set: { router.path = $0 })
+}
 }
 
 ## Design choices to keep

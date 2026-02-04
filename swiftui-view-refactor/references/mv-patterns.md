@@ -5,6 +5,7 @@ Source provided by user: "SwiftUI in 2025: Forget MVVM" (Thomas Ricouard).
 Use this as guidance when deciding whether to introduce a view model.
 
 Key points:
+
 - Default to MV: views are lightweight state expressions and orchestration points.
 - Prefer `@State`, `@Environment`, `@Query`, `task`, and `onChange` over view models.
 - Inject services and shared models via `@Environment`; keep logic in services/models.
@@ -14,7 +15,7 @@ Key points:
 
 # SwiftUI in 2025: Forget MVVM
 
-*Let me tell you why*
+_Let me tell you why_
 
 **Thomas Ricouard**
 10 min read · Jun 2, 2025
@@ -37,15 +38,15 @@ You never will.
 
 ## The MVVM Trap
 
-When SwiftUI launched in 2019, many developers brought their UIKit baggage with them. We were so used to the *Massive View Controller* problem that we immediately reached for MVVM as our savior.
+When SwiftUI launched in 2019, many developers brought their UIKit baggage with them. We were so used to the _Massive View Controller_ problem that we immediately reached for MVVM as our savior.
 
 But SwiftUI isn’t UIKit.
 
 It was designed from the ground up with a different philosophy, highlighted in multiple WWDC sessions like:
 
-- *Data Flow Through SwiftUI (WWDC19)*
-- *Data Essentials in SwiftUI (WWDC20)*
-- *Discover Observation in SwiftUI (WWDC23)*
+- _Data Flow Through SwiftUI (WWDC19)_
+- _Data Essentials in SwiftUI (WWDC20)_
+- _Discover Observation in SwiftUI (WWDC23)_
 
 Those sessions barely mention ViewModels.
 
@@ -71,8 +72,8 @@ struct FeedView: View {
         case loaded([Post])
     }
 
-    @State private var viewState: ViewState = .loading
-    @State private var isRefreshing = false
+    @State internal var viewState: ViewState = .loading
+    @State internal var isRefreshing = false
 
     var body: some View {
         NavigationStack {
@@ -199,6 +200,7 @@ struct IcySkyApp: App {
 All dependencies are injected once and available everywhere.
 
 ## SwiftData: The Perfect Example
+
 SwiftData was built to work directly in views.
 
 ```swift
@@ -247,31 +249,32 @@ Manual fetching. Manual refresh. Boilerplate everywhere.
 You’re fighting the framework.
 
 ## Testing Reality
+
 Testing SwiftUI views provides minimal value.
 
 Instead:
 
-* Unit test services and business logic
+- Unit test services and business logic
 
-* Test models and transformations
+- Test models and transformations
 
-* Use SwiftUI previews for visual regression
+- Use SwiftUI previews for visual regression
 
-* Use UI automation for E2E tests
+- Use UI automation for E2E tests
 
-* If needed, use `ViewInspector` for view introspection.
+- If needed, use `ViewInspector` for view introspection.
 
 ## The 2025 Reality
 
 SwiftUI is mature:
 
-* `@Observable`
+- `@Observable`
 
-* Better Environment
+- Better Environment
 
-* Improved async & task lifecycle
+- Improved async & task lifecycle
 
-* Almost everything you need lives inside the view.
+- Almost everything you need lives inside the view.
 
 I’ll reconsider ViewModels when Apple lets us access Environment outside views.
 
@@ -281,27 +284,28 @@ Until then, vanilla SwiftUI is the canon.
 
 Every ViewModel adds:
 
-* More complexity
+- More complexity
 
-* More objects to sync
+- More objects to sync
 
-* More indirection
+- More indirection
 
-* More cognitive overhead
+- More cognitive overhead
 
 SwiftUI gives you:
 
-* `@State`
+- `@State`
 
-* `@Environment`
+- `@Environment`
 
-* `@Observable`
+- `@Observable`
 
-* Binding
+- Binding
 
 Use them. Trust the framework.
 
 ## The Bottom Line
+
 In 2025, there’s no excuse for cluttering SwiftUI apps with unnecessary ViewModels.
 
 Let views be pure expressions of state.

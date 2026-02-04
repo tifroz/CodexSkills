@@ -16,7 +16,7 @@ Use matched transitions to create smooth continuity between a source view (thumb
 ```swift
 struct MediaPreview: View {
   @Namespace private var namespace
-  @State private var selected: MediaAttachment?
+  @State internal var selected: MediaAttachment?
 
   var body: some View {
     ThumbnailView()
@@ -34,7 +34,7 @@ struct MediaPreview: View {
 ```swift
 struct ToggleBadge: View {
   @Namespace private var space
-  @State private var isOn = false
+  @State internal var isOn = false
 
   var body: some View {
     Button {

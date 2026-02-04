@@ -66,7 +66,7 @@ final class DataModel {
 }
 
 struct ContentView: View {
-  @State private var model = DataModel()
+  @State internal var model = DataModel()
 
   var body: some View {
     List(model.items, id: \.self) { item in

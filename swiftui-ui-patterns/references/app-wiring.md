@@ -6,17 +6,17 @@ Show how to wire the app shell (TabView + NavigationStack + sheets) and install 
 
 ## Recommended structure
 
-1) Root view sets up tabs, per-tab routers, and sheets.
-2) A dedicated view modifier installs global dependencies and lifecycle tasks (auth state, streaming watchers, push tokens, data containers).
-3) Feature views pull only what they need from the environment; feature-specific state stays local.
+1. Root view sets up tabs, per-tab routers, and sheets.
+2. A dedicated view modifier installs global dependencies and lifecycle tasks (auth state, streaming watchers, push tokens, data containers).
+3. Feature views pull only what they need from the environment; feature-specific state stays local.
 
 ## Root shell example (generic)
 
 ```swift
 @MainActor
 struct AppView: View {
-  @State private var selectedTab: AppTab = .home
-  @State private var tabRouter = TabRouter()
+  @State internal var selectedTab: AppTab = .home
+  @State internal var tabRouter = TabRouter()
 
   var body: some View {
     TabView(selection: $selectedTab) {
@@ -136,6 +136,7 @@ extension View {
 ```
 
 Notes:
+
 - The `.task(id:)` hooks respond to account/client changes, re-seeding services and watcher state.
 - Keep the modifier focused on global wiring; feature-specific state stays within features.
 - Adjust types (AccountManager, StreamWatcher, etc.) to match your project.

@@ -18,11 +18,13 @@ Audit SwiftUI view performance end-to-end, from instrumentation and baselining t
 ## 1. Code-First Review
 
 Collect:
+
 - Target view/feature code.
 - Data flow: state, environment, observable models.
 - Symptoms and reproduction steps.
 
 Focus on:
+
 - View invalidation storms from broad state changes.
 - Unstable identity in lists (`id` churn, `UUID()` per render).
 - Heavy work in `body` (formatting, sorting, image decoding).
@@ -31,6 +33,7 @@ Focus on:
 - Over-animated hierarchies (implicit animations on large trees).
 
 Provide:
+
 - Likely root causes with code references.
 - Suggested fixes and refactors.
 - If needed, a minimal repro or instrumentation suggestion.
@@ -38,18 +41,21 @@ Provide:
 ## 2. Guide the User to Profile
 
 Explain how to collect data with Instruments:
+
 - Use the SwiftUI template in Instruments (Release build).
 - Reproduce the exact interaction (scroll, navigation, animation).
 - Capture SwiftUI timeline and Time Profiler.
 - Export or screenshot the relevant lanes and the call tree.
 
 Ask for:
+
 - Trace export or screenshots of SwiftUI lanes + Time Profiler call tree.
 - Device/OS/build configuration.
 
 ## 3. Analyze and Diagnose
 
 Prioritize likely SwiftUI culprits:
+
 - View invalidation storms from broad state changes.
 - Unstable identity in lists (`id` churn, `UUID()` per render).
 - Heavy work in `body` (formatting, sorting, image decoding).
@@ -62,6 +68,7 @@ Summarize findings with evidence from traces/logs.
 ## 4. Remediate
 
 Apply targeted fixes:
+
 - Narrow state scope (`@State`/`@Observable` closer to leaf views).
 - Stabilize identities for `ForEach` and lists.
 - Move heavy work out of `body` (precompute, cache, `@State`).
@@ -104,7 +111,7 @@ var filtered: [Item] {
 Prefer precompute or cache on change:
 
 ```swift
-@State private var filtered: [Item] = []
+@State internal var filtered: [Item] = []
 // update filtered when inputs change
 ```
 
@@ -174,6 +181,7 @@ Summarize the delta (CPU, frame drops, memory peak) if provided.
 ## Outputs
 
 Provide:
+
 - A short metrics table (before/after if available).
 - Top issues (ordered by impact).
 - Proposed fixes with estimated effort.
@@ -181,6 +189,7 @@ Provide:
 ## References
 
 Add Apple documentation and WWDC resources under `references/` as they are supplied by the user.
+
 - Optimizing SwiftUI performance with Instruments: `references/optimizing-swiftui-performance-instruments.md`
 - Understanding and improving SwiftUI performance: `references/understanding-improving-swiftui-performance.md`
 - Understanding hangs in your app: `references/understanding-hangs-in-your-app.md`

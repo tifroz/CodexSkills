@@ -14,7 +14,7 @@ Use overlays for transient UI (toasts, banners, loaders) without affecting layou
 
 ```swift
 struct AppRootView: View {
-  @State private var toast: Toast?
+  @State internal var toast: Toast?
 
   var body: some View {
     content

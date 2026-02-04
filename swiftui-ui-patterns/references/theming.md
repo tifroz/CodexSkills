@@ -31,7 +31,7 @@ final class Theme {
 ```swift
 @main
 struct MyApp: App {
-  @State private var theme = Theme()
+  @State internal var theme = Theme()
 
   var body: some Scene {
     WindowGroup {

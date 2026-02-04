@@ -45,6 +45,7 @@ Choose a track based on your goal:
 ## Component references
 
 Use `references/components-index.md` as the entry point. Each component reference should include:
+
 - Intent and best-fit scenarios.
 - Minimal usage pattern with local conventions.
 - Pitfalls and performance notes.
@@ -55,7 +56,7 @@ Use `references/components-index.md` as the entry point. Each component referenc
 ### Item-driven sheet (preferred)
 
 ```swift
-@State private var selectedItem: Item?
+@State internal var selectedItem: Item?
 
 .sheet(item: $selectedItem) { item in
     EditItemSheet(item: item)
@@ -70,7 +71,7 @@ struct EditItemSheet: View {
     @Environment(Store.self) private var store
 
     let item: Item
-    @State private var isSaving = false
+    @State internal var isSaving = false
 
     var body: some View {
         VStack {

@@ -21,7 +21,7 @@ Use `List` for feed-style content and settings-style rows where built-in row reu
 @MainActor
 struct TimelineListView: View {
   @Environment(\.selectedTabScrollToTop) private var selectedTabScrollToTop
-  @State private var scrollToId: String?
+  @State internal var scrollToId: String?
 
   var body: some View {
     ScrollViewReader { proxy in

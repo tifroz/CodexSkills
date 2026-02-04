@@ -39,7 +39,7 @@ NavigationStack {
 
 ```swift
 struct TimelineScreen: View {
-  @State private var timeline: TimelineFilter = .home
+  @State internal var timeline: TimelineFilter = .home
 
   var body: some View {
     NavigationStack {

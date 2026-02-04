@@ -16,10 +16,10 @@ Use `searchable` to add native search UI with optional scopes and async results.
 ```swift
 @MainActor
 struct ExploreView: View {
-  @State private var searchQuery = ""
-  @State private var searchScope: SearchScope = .all
-  @State private var isSearching = false
-  @State private var results: [SearchResult] = []
+  @State internal var searchQuery = ""
+  @State internal var searchScope: SearchScope = .all
+  @State internal var isSearching = false
+  @State internal var results: [SearchResult] = []
 
   var body: some View {
     List {
